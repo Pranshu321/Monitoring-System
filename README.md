@@ -40,7 +40,7 @@ Welcome to `CPMS`, your go-to solution for monitoring CPU processes and detectin
 
 ## Development
 
-Alternatively, instead of using the hosted version of the product, Amplication can be run locally for code generation purposes or contributions - if so, please refer to our [contributing](#contributing_anchor) section.
+Alternatively, instead of using the hosted version of the product, CPMS can be run locally for monitoring purposes or contributions - if so, please refer to our how to run section.
 
 ### Tech Stack
 
@@ -54,11 +54,11 @@ Alternatively, instead of using the hosted version of the product, Amplication c
 
 <details open>
 <summary>
-Running Amplication
+Running CPMS
 </summary> <br />
 
 > **Note**
-> It is also possible to start development with GitHub Codespaces, when navigating to `< > Code`, select `Codespaces` instead of `Local`. Click on either the `+`-sign or the `Create codespace on master`-button.
+> It is also possible to start development with GitHub Codespaces, when navigating to `< > Code`, copy the `https` repo link.
 
 Amplication is using a monorepo architecture - powered by <a href="https://nx.dev">Nx Workspaces</a> - where multiple applications and libraries exist in a single repository. To setup a local development environment the following steps can be followed:
 
@@ -66,58 +66,43 @@ Amplication is using a monorepo architecture - powered by <a href="https://nx.de
 1. You have typescript installed locally on you machine ```npm install -g typescript```
 2. You are using a supported node version (check `engines` `node` in the [package.json](./package.json))
 3. You are using a supported npm version (check `engines` `npm` in the [package.json](./package.json))
-4. You have `docker` installed and running on your machine
+4. You have `python & pip` installed and running on your machine
 
+
+### Frontend
 
 1. Clone the repository and install dependencies:
-```shell
-git clone https://github.com/amplication/amplication.git && cd amplication && npm install
+```bash
+git clone https://github.com/Pranshu321/Monitoring-System.git && cd Monitoring-System/Frontend && npm install
 ```
 
-2. Run the setup script, which takes care of installing dependencies, building packages, and setting up the workspace:
-```shell
-npm run setup:dev
+2. Run the command to install dependencies and setting up the workspace
+```bash
+npm install
 ```
 
-3. Option 1: Running the required infrastructure - view infrastructure component logs
-
-
-```shell
-npm run docker:dev
-```
-3. Option 2: Running the required infrastructure - run the infrastructure components in background
-```shell
-npm run docker:dev -- -d
+3. Hurray!! , Now just run the frontend
+```bash
+npm run dev
 ```
 
-4. Apply database migrations
-```shell
-npm run db:migrate:deploy
+### Server
+
+```bash
+cd Server
 ```
 
-5. To start developing, run one or more of the applications available under `serve:[application]` scripts of the package.json.
-
-```shell
-# running the server component
-npm run serve:server
-
-# running the client component
-npm run serve:client
-
-# running the data-service-generator component
-npm run serve:dsg
-
-# running the git-pull-request-service component
-npm run serve:git
-
-# running the plugin-api component
-npm run serve:plugins
+2. Install the dependencies for server
+```bash
+pip install fastapi
+pip install uvicorn
 ```
 
-> **Note**
-> In order to run the Amplication client properly, both the client and server need to be started by the `npm run serve:[application]` command, as well as an additional component for development on a specific component.
+3. Run the server
+```bash
+uvicorn main:app --reload
+```
 
-The development environment should now be set up. Additional information on the different application components can be found under packages/`[application]`/README.md file. Happy hacking! 👾
 </details>
 
 ## Resources
