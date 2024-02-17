@@ -43,10 +43,23 @@ def update_or_add(data):
         collection.insert_one(data)
         print(f"Added new document with PID {pid}")
 
+
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
+
+@app.get("/mongoprocess")
+async def mongoprocess():
+    if collection.count_documents({}) == 0:
+        return "No data Present"
+    
+    items = []
+    for x in collection.find({} , {"_id": 0 , "connections": 0, "open_files": 0, "environ": 0}):
+        items.append(x)
+    
+    print(len(items))
+    return items
 
 @app.get("/process")
 async def process():
@@ -67,5 +80,5 @@ async def process():
             # 'environ': process.info['environ']
         }
         items.append(process_info)
-    
+
     return items
