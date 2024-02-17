@@ -1,0 +1,31 @@
+@layer components {
+  .style-basic:not(.dark) {
+    .aside {
+      @apply bg-white;
+    }
+    .aside-scrollbars {
+      @apply aside-scrollbars-gray;
+    }
+    .aside-brand {
+      @apply bg-white text-black;
+    }
+    .aside-menu-item {
+      @apply text-gray-900 hover:text-blue-500;
+    }
+    .aside-menu-item-active {
+      @apply text-blue-600;
+    }
+    .aside-menu-dropdown {
+      @apply bg-gray-700/50;
+    }
+    .navbar-item-label {
+      @apply text-black hover:text-blue-500;
+    }
+    .navbar-item-label-active {
+      @apply text-blue-600;
+    }
+    .overlay {
+      @apply from-gray-700 via-gray-900 to-gray-700;
+    }
+  }
+}
