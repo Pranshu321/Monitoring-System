@@ -1,9 +1,9 @@
 import {
-  mdiAccountMultiple,
-  mdiCartOutline,
   mdiChartPie,
-  mdiChartTimelineVariant,
   mdiMonitorCellphone,
+  mdiGraph,
+  mdiMemory,
+  mdiCpu64Bit, 
   mdiReload,
 } from '@mdi/js'
 import Head from 'next/head'
@@ -49,59 +49,46 @@ const DashboardPage = () => {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
           <CardBoxWidget
             trendLabel="12%"
-            trendType="up"
+            // trendType="up"
             trendColor="success"
-            icon={mdiAccountMultiple}
+            icon={mdiCpu64Bit}
             iconColor="success"
-            number={512}
-            label="Clients"
+            number={254}
+            label="Total Processes"
           />
           <CardBoxWidget
             trendLabel="16%"
-            trendType="down"
+            // trendType="down"
             trendColor="danger"
-            icon={mdiCartOutline}
+            icon={mdiMemory}
             iconColor="info"
             number={7770}
             numberPrefix="$"
-            label="Sales"
+            label="Total Memory Usage"
           />
           <CardBoxWidget
             trendLabel="Overflow"
-            trendType="warning"
+            // trendType="warning"
             trendColor="warning"
-            icon={mdiChartTimelineVariant}
+            icon={mdiGraph}
             iconColor="danger"
             number={256}
             numberSuffix="%"
-            label="Performance"
+            label="Total Threads"
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <div className="flex flex-col justify-between">
-            {transactions.map((transaction: Transaction) => (
-              <CardBoxTransaction key={transaction.id} transaction={transaction} />
-            ))}
-          </div>
-          <div className="flex flex-col justify-between">
-            {clientsListed.map((client: Client) => (
-              <CardBoxClient key={client.id} client={client} />
-            ))}
-          </div>
-        </div>
-
-        <div className="my-6">
+        {/* <div className="my-6">
           <SectionBannerStarOnGitHub />
-        </div>
+        </div> */}
 
-        <SectionTitleLineWithButton icon={mdiChartPie} title="Trends overview">
+        <SectionTitleLineWithButton icon={mdiChartPie} title="CPU usage overview">
           <Button icon={mdiReload} color="whiteDark" onClick={fillChartData} />
         </SectionTitleLineWithButton>
 
         <CardBox className="mb-6">{chartData && <ChartLineSample data={chartData} />}</CardBox>
 
-        <SectionTitleLineWithButton icon={mdiAccountMultiple} title="Clients" />
+        <SectionTitleLineWithButton icon={mdiCpu64Bit} title="CPU Processes" />
 
         <NotificationBar color="info" icon={mdiMonitorCellphone}>
           <b>Responsive table.</b> Collapses on mobile

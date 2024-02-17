@@ -2,6 +2,13 @@ from fastapi import FastAPI
 import psutil
 import csv
 from fastapi.middleware.cors import CORSMiddleware
+from pymongo import MongoClient
+
+# Connect to MongoDB
+uri = "mongodb+srv://pranshujain0221:abc%401234@telaverge.gfbpyg6.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(uri)
+db = client['telaverge']
+collection = db['process']
 
 app = FastAPI()
 
@@ -21,6 +28,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+def update_or_add(data):
+    pid = data["pid"]
+    existing_document = collection.find_one({"pid": pid})
+
+    if existing_document is not None:
+        # Update existing document
+        update_dict = {"$set": {key: value for key,
+                                value in data.items() if key != "pid"}}
+        collection.update_one({"pid": pid}, update_dict)
+    else:
+        # Add new document
+        collection.insert_one(data)
+        print(f"Added new document with PID {pid}")
+
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
@@ -28,7 +50,7 @@ async def root():
 
 @app.get("/process")
 async def process():
-    items=[]
+    items = []
     for process in psutil.process_iter(['pid', 'name', 'status', 'ppid', 'cpu_times', 'memory_info', 'num_threads', 'connections', 'open_files', 'environ']):
         process_info = {
             'pid': process.info['pid'],
@@ -45,4 +67,5 @@ async def process():
             # 'environ': process.info['environ']
         }
         items.append(process_info)
+    
     return items

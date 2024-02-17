@@ -34,7 +34,7 @@ const CardBoxWidget = (props: Props) => {
           <Button icon={mdiCog} color="lightDark" small />
         </div>
       )}
-      <div className="flex items-center justify-between">
+      <div className="flex border-2 hover:shadow-md hover:scale-105 cursor-pointer transition-all rounded-xl border-gray-300 p-8 items-center justify-between">
         <div>
           <h3 className="text-lg leading-tight text-gray-500 dark:text-slate-400">{props.label}</h3>
           <h1 className="text-3xl leading-tight font-semibold">

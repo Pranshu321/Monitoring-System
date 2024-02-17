@@ -12,7 +12,7 @@ const SectionBannerStarOnGitHub = () => {
       </h1>
       <div>
         <Button
-          href="https://github.com/pranshu321/telaverge-monitering-system"
+          href="https://github.com/Pranshu321/Monitoring-System"
           target="_blank"
           icon={mdiGithub}
           label="GitHub"
