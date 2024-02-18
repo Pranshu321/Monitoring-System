@@ -8,11 +8,11 @@
   <i align="center">Instantly Monitor Target Machine CPU Processes and Detect Anamoly 🚀</i>
 </p>
 
-<p align="center">
-    <img src="https://github.com/Pranshu321/Monitoring-System/assets/86917304/4bc14ecd-7620-4c5e-ae2d-7f374568c81f" alt="dashboard"/>
-</p>
 <p>
-    <img src="https://github.com/Pranshu321/Monitoring-System/assets/86917304/2504727f-b1ca-45b9-bcd1-eee2586605dd" alt="dashboard"/>
+    <img src="https://github.com/Pranshu321/Monitoring-System/assets/86917304/a8df2779-413b-4310-b900-3b55cd6ff61f" alt="dashboard"/>
+</p>
+<p align="center">
+    <img src="https://github.com/Pranshu321/Monitoring-System/assets/86917304/27806ada-51a5-450d-8337-4de244950d4b" alt="dashboard"/>
 </p>
 
 ## Introduction
