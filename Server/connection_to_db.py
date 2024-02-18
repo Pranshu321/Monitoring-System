@@ -55,5 +55,3 @@ def collect_process_data():
 
         except psutil.NoSuchProcess:
             pass
-
-collect_process_data()

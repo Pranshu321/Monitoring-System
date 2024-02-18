@@ -12,7 +12,7 @@ const TableSampleClients = () => {
   const [numPages, setnumpages] = useState(0);
   const [pagesList, setpagesList] = useState([]);
   async function fetchProcess() {
-    const res = await fetch("http://127.0.0.1:8000/process", { next: { revalidate: 10 } });
+    const res = await fetch("http://127.0.0.1:8000/mongoprocess", { next: { revalidate: 10 } });
     const process = await res.json();
     setAllprocess(process);
     const perPage = 20
@@ -87,6 +87,7 @@ const TableSampleClients = () => {
             <th>Status</th>
             <th>ParentID</th>
             <th>CPU Time User</th>
+            <th>Memory %</th>
             <th>CPU Time System</th>
             <th>Reserved Memory</th>
             <th>Virtual Memory</th>
@@ -100,15 +101,16 @@ const TableSampleClients = () => {
               <td className="border-b-0 lg:w-6 before:hidden">
                 <UserAvatar username={client.name} className="w-24 h-24 mx-auto lg:w-6 lg:h-6" />
               </td>
-              <td data-label="Name">{client.Pid}</td>
+              <td data-label="Name">{client.pid}</td>
               <td data-label="Company" className='font-semibold'>{client.name}</td>
               <td data-label="status" className={`${client.status === "running" ? "text-green-500" : "text-red-500"} font-semibold`}>{client.status}</td>
-              <td data-label="City">{client.parentId}</td>
-              <td data-label="City">{client.cpu_time_user}</td>
-              <td data-label="City">{client.cpu_time_system}</td>
-              <td data-label="City">{client.memory_reserved}</td>
-              <td data-label="City">{client.memory_virtual}</td>
-              <td data-label="City">{client.threads}</td>
+              <td data-label="City">{client.ppid}</td>
+              <td data-label="City">{parseFloat(client.cpu_times_user).toFixed(2)}</td>
+              <td data-label="City">{client.memory_percent}</td>
+              <td data-label="City">{client.cpu_times_system.toFixed(2)}</td>
+              <td data-label="City">{client.memory_info_rss}</td>
+              <td data-label="City">{client.memory_info_vms}</td>
+              <td data-label="City">{client.num_threads}</td>
               {/* <td data-label="Progress" className="lg:w-32">
                 <progress
                   className="flex w-2/5 self-center lg:w-full"
@@ -123,12 +125,12 @@ const TableSampleClients = () => {
               </td> */}
               <td className="before:hidden lg:w-1 whitespace-nowrap">
                 <Buttons type="justify-start lg:justify-end" noWrap>
-                  <Button
+                  {/* <Button
                     color="info"
                     icon={mdiEye}
                     onClick={() => setIsModalInfoActive(true)}
                     small
-                  />
+                  /> */}
                   <Button
                     color="danger"
                     icon={mdiTrashCan}

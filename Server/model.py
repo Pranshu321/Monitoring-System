@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1tMqd3GhcSuBo4HKKrJd1QA6546FSHcG6
 """
 
-!pip install scikit-learn
+# !pip install scikit-learn
 
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor as rfr

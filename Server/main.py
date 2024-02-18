@@ -53,28 +53,30 @@ async def root():
 async def mongoprocess():
     if collection.count_documents({}) == 0:
         return "No data Present"
-    
+
     items = []
-    for x in collection.find({} , {"_id": 0 , "connections": 0, "open_files": 0, "environ": 0}):
+    for x in collection.find({}, {"_id": 0, "connections": 0, "open_files": 0, "environ": 0}):
         items.append(x)
-    
-    print(len(items))
+
     return items
+
 
 @app.get("/process")
 async def process():
     items = []
+    disk_usage = psutil.disk_usage('/').percent
     for process in psutil.process_iter(['pid', 'name', 'status', 'ppid', 'cpu_times', 'memory_info', 'num_threads', 'connections', 'open_files', 'environ']):
         process_info = {
             'pid': process.info['pid'],
             'name': process.info['name'],
             'status': process.info['status'],
-            'parentId': process.info['ppid'],
-            'cpu_time_user': process.info['cpu_times'].user,
-            'cpu_time_system': process.info['cpu_times'].system,
-            'memory_reserved': process.info['memory_info'].rss,
-            'memory_virtual': process.info['memory_info'].vms,
-            'threads': process.info['num_threads'],
+            'ppid': process.info['ppid'],
+            'cpu_times_user': process.info['cpu_times'].user,
+            'cpu_times_system': process.info['cpu_times'].system,
+            'memory_info_rss': process.info['memory_info'].rss,
+            'memory_info_vms': process.info['memory_info'].vms,
+            'num_threads': process.info['num_threads'],
+            'disk_usage': disk_usage
             # 'connections': process.info['connections'],
             # 'open_files': process.info['open_files'],
             # 'environ': process.info['environ']

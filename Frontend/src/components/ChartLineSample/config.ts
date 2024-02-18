@@ -8,7 +8,6 @@ export const chartColors = {
 
 const randomChartData = (n: number) => {
   const data = []
-
   for (let i = 0; i < n; i++) {
     data.push(Math.round(Math.random() * 200))
   }
@@ -36,7 +35,7 @@ const datasetObject = (color: string, points: number) => {
   }
 }
 
-export const sampleChartData = (points = 9) => {
+export const sampleChartData = (points = 300) => {
   const labels = []
 
   for (let i = 1; i <= points; i++) {
