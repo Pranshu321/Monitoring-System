@@ -20,10 +20,8 @@ import ChartLineSample from '../components/ChartLineSample'
 import NotificationBar from '../components/NotificationBar'
 import TableSampleClients from '../components/Table/SampleClients'
 import { getPageTitle } from '../config'
-import { memoryUsage } from 'process'
 
 const DashboardPage = () => {
-  const [proccess, setProcess] = useState([]);
   const [chartData, setChartData] = useState(sampleChartData())
 
   const fillChartData = (e: React.MouseEvent) => {

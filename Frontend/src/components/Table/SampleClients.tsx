@@ -1,4 +1,4 @@
-import { mdiEye, mdiTrashCan } from '@mdi/js'
+import { mdiTrashCan } from '@mdi/js'
 import React, { useEffect, useState } from 'react'
 import Button from '../Button'
 import Buttons from '../Buttons'
