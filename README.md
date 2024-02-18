@@ -136,7 +136,10 @@ change the height and width for each of the contributors from 80 to 50.
 
 [//]: contributor-faces
 <a href="https://github.com/Pranshu321/Monitoring-System/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Pranshu321/Monitoring-System" />
+<img src="https://contrib.rocks/image?repo=Pranshu321/Monitoring-System" />
+
+
 </a>
+<a href="https://github.com/netosis"><img src="https://github.com/Pranshu321/Monitoring-System/assets/86917304/0f9395ed-c309-4128-9ea3-ea51998b31af" alt="photo" width="70px"/></a>
 
 [//]: contributor-faces
