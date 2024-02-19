@@ -117,6 +117,19 @@ uvicorn main:app --reload
 - **[YouTube](https://www.youtube.com/c/Amplicationcom)** for guides and technical talks.
 
 <a name="contributing_anchor"></a>
+
+
+## Team
+
+### Members
+- Pranshu Jain
+- Aaryan Bansal
+
+### Presentation
+- [CPMS](https://docs.google.com/presentation/d/1FaKqqDoaY6I-7R9tteYyAfV8PXP2BbErTcf3Or3CGbc/edit?usp=sharing)
+- [Report](https://drive.google.com/file/d/1Wpt_AvnXfqEre9CH_L1YVHAdIFzPX9HX/view?usp=sharing)
+  
+
 ## Contributing
 
 CPMS is an open-source project, and contributions are welcome! If you'd like to contribute, please follow these guidelines:
@@ -124,7 +137,6 @@ CPMS is an open-source project, and contributions are welcome! If you'd like to 
 *   **Bug Reports:** If you encounter any bugs or issues, please submit a detailed bug report [here](https://github.com/Pranshu321/Monitoring-System/issues).
 *   **Feature Requests:** Have an idea for a new feature or enhancement? Submit your feature request [here](https://github.com/Pranshu321/Monitoring-System/issues). 
 *   **Pull Requests:** We welcome pull requests for bug fixes, enhancements, and new features. Please ensure that your code follows the project's coding standards and include relevant tests.
-
 
 ## Contributors
 
