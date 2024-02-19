@@ -40,12 +40,12 @@ const TableSampleClients = () => {
   //   return <p>No data</p>
   // }
 
-  const [isModalInfoActive, setIsModalInfoActive] = useState(false)
+  // const [isModalInfoActive, setIsModalInfoActive] = useState(false)
   const [isModalTrashActive, setIsModalTrashActive] = useState(false)
   const [globalPid, setGlobalPid] = useState(-1);
 
   const handleModalAction = () => {
-    setIsModalInfoActive(false)
+    // setIsModalInfoActive(false)
     setIsModalTrashActive(false)
   }
 

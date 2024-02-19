@@ -25,8 +25,7 @@ const CardBoxModal = ({
   isActive,
   children,
   onConfirm,
-  onCancel,
-  pid
+  onCancel
 }: Props) => {
   if (!isActive) {
     return null
