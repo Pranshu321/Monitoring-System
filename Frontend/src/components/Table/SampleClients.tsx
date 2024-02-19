@@ -42,40 +42,42 @@ const TableSampleClients = () => {
 
   const [isModalInfoActive, setIsModalInfoActive] = useState(false)
   const [isModalTrashActive, setIsModalTrashActive] = useState(false)
+  const [globalPid, setGlobalPid] = useState(-1);
 
   const handleModalAction = () => {
     setIsModalInfoActive(false)
     setIsModalTrashActive(false)
   }
 
+  const onConfirm = async () => {
+    const res = await fetch(`http://127.0.0.1:8000/kill?pid=${globalPid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (res.status === 200) {
+      handleModalAction();
+      fetchProcess();
+    }
+  }
+
   return (
     <>
       <CardBoxModal
-        title="Sample modal"
-        buttonColor="info"
-        buttonLabel="Done"
-        isActive={isModalInfoActive}
-        onConfirm={handleModalAction}
-        onCancel={handleModalAction}
-      >
-        <p>
-          Lorem ipsum dolor sit amet <b>adipiscing elit</b>
-        </p>
-        <p>This is sample modal</p>
-      </CardBoxModal>
-
-      <CardBoxModal
-        title="Please confirm"
+        title="Do you want to Kill Process"
         buttonColor="danger"
         buttonLabel="Confirm"
+        pid={globalPid != -1 ? globalPid : -1}
         isActive={isModalTrashActive}
-        onConfirm={handleModalAction}
+        onConfirm={onConfirm}
         onCancel={handleModalAction}
       >
         <p>
-          Lorem ipsum dolor sit amet <b>adipiscing elit</b>
+          The Process Id is <b>{globalPid}</b>
         </p>
-        <p>This is sample modal</p>
+        {/* <p>This is sample modal</p> */}
       </CardBoxModal>
 
       <table>
@@ -134,7 +136,7 @@ const TableSampleClients = () => {
                   <Button
                     color="danger"
                     icon={mdiTrashCan}
-                    onClick={() => setIsModalTrashActive(true)}
+                    onClick={() => { setGlobalPid(client.pid); setIsModalTrashActive(true); }}
                     small
                   />
                 </Buttons>

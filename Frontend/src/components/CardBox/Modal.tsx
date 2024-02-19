@@ -15,6 +15,7 @@ type Props = {
   children: ReactNode
   onConfirm: () => void
   onCancel?: () => void
+  pid?: number
 }
 
 const CardBoxModal = ({
@@ -25,6 +26,7 @@ const CardBoxModal = ({
   children,
   onConfirm,
   onCancel,
+  pid
 }: Props) => {
   if (!isActive) {
     return null

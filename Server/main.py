@@ -3,6 +3,7 @@ import psutil
 import csv
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
+# from connection_with_model_prediction import collect_process_data
 
 # Connect to MongoDB
 uri = "mongodb+srv://pranshujain0221:abc%401234@telaverge.gfbpyg6.mongodb.net/?retryWrites=true&w=majority"
@@ -27,22 +28,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-def update_or_add(data):
-    pid = data["pid"]
-    existing_document = collection.find_one({"pid": pid})
-
-    if existing_document is not None:
-        # Update existing document
-        update_dict = {"$set": {key: value for key,
-                                value in data.items() if key != "pid"}}
-        collection.update_one({"pid": pid}, update_dict)
-    else:
-        # Add new document
-        collection.insert_one(data)
-        print(f"Added new document with PID {pid}")
-
 
 @app.get("/")
 async def root():
@@ -84,3 +69,11 @@ async def process():
         items.append(process_info)
 
     return items
+
+@app.get("/kill")
+async def kill(pid:int):
+    process = psutil.Process(pid)
+    process.terminate()
+    collection.find_one_and_delete({"pid": pid})
+    return f"{pid} process Killed"
+
