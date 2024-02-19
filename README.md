@@ -107,14 +107,11 @@ uvicorn main:app --reload
 
 ## Resources
 
-- **[Website](https://amplication.com)** overview of the product.
-- **[Docs](https://docs.amplication.com)** for comprehensive documentation.
-- **[Blog](https://amplication.com/blog)** for guides and technical comparisons.
-- **[Roadmap](https://amplication.com/#roadmap)** to see what features will be added in the future.
-- **[Discord](https://amplication.com/discord)** for support and discussions with the community and the team.
-- **[GitHub](https://github.com/amplication/amplication)** for source code, project board, issues, and pull requests.
-- **[Twitter](https://twitter.com/amplication)** for the latest updates on the product and published blogs.
-- **[YouTube](https://www.youtube.com/c/Amplicationcom)** for guides and technical talks.
+- **[Adaptive real-time anomaly detection in cloud infrastructures](https://www.researchgate.net/publication/318912328_Adaptive_real-time_anomaly_detection_in_cloud_infrastructures)**
+- **[CPU-usage-and-anomaly-detection](https://github.com/IrinaMax/CPU-usage-and-anomaly-detection)**
+- **[Experience Report: System Log Analysis for Anomaly Detection](https://jiemingzhu.github.io/pub/slhe_issre2016.pdf)**
+- **[DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning](https://dl.acm.org/doi/pdf/10.1145/3133956.3134015)**
+- **[Log Clustering Based Problem Identification for Online Service Systems](https://hongyujohn.github.io/LogClustering_Final.pdf)**
 
 <a name="contributing_anchor"></a>
 
