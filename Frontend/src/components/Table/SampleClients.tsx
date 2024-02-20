@@ -12,9 +12,10 @@ const TableSampleClients = () => {
   const [numPages, setnumpages] = useState(0);
   const [pagesList, setpagesList] = useState([]);
   async function fetchProcess() {
-    const res = await fetch("http://127.0.0.1:8000/mongoprocess", { next: { revalidate: 10 } });
+    // const res = await fetch("http://127.0.0.1:8000/mongoprocess", { next: { revalidate: 10 } });
+    const res = await fetch("https://script.google.com/macros/s/AKfycbyHF2WvZ6rj3pqTnctYkE3PkpXF8S_S512__KDo-lhp4eE9zE_oiX-YIvMbZjoHESc6Cw/exec", { next: { revalidate: 10 } });
     const process = await res.json();
-    setAllprocess(process);
+    setAllprocess(process.data);
     const perPage = 20
     setclientsPaginated(Allprocess.slice(perPage * currentPage, perPage * (currentPage + 1)));
     setnumpages(Math.ceil(Allprocess.length / perPage));

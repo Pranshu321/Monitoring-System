@@ -32,8 +32,10 @@ const DashboardPage = () => {
   const [TotalThreads, setThreads] = useState(0);
   const [TotalProcess, setTotalProcess] = useState(0);
   async function FetchStats() {
-    const res = await fetch("http://127.0.0.1:8000/mongoprocess");
-    const process = await res.json();
+    // const res = await fetch("http://127.0.0.1:8000/mongoprocess");
+    const res = await fetch("https://script.google.com/macros/s/AKfycbyHF2WvZ6rj3pqTnctYkE3PkpXF8S_S512__KDo-lhp4eE9zE_oiX-YIvMbZjoHESc6Cw/exec");
+    let process = await res.json();
+    process = process.data;
     setTotalProcess(process.length);
     // max memory find
     let ans = 0;
@@ -41,7 +43,7 @@ const DashboardPage = () => {
       ans = Math.max(ans, process[index].memory_percent);
     }
     setMemoryusage(ans);
-    setThreads(process.reduce((acc, item) => acc + item.num_threads, 0));
+    setThreads(process?.reduce((acc, item) => acc + item.num_threads, 0));
   }
 
   useEffect(() => {
