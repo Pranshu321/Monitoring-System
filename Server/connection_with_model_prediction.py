@@ -34,9 +34,9 @@ picklefile = open('model.pkl', 'rb')
 model = pickle.load(picklefile)
 
 
-def predictor(cpu_percent, memory_percent):
-    input_data = pd.DataFrame([[cpu_percent, memory_percent]], columns=[
-                              'cpu_percent', 'memory_percent'])
+def predictor(cpu_percent, cpu_times_user, cpu_times_system, memory_percent, memory_info_rss, memory_info_vms, num_threads, disk_usage):
+    input_data = pd.DataFrame([[cpu_percent, cpu_times_user, cpu_times_system, memory_percent, memory_info_rss, memory_info_vms, num_threads, disk_usage]],
+                              columns=['cpu_percent', 'cpu_times_user', 'cpu_times_system', 'memory_percent', 'memory_info_rss', 'memory_info_vms', 'num_threads', 'disk_usage'])
     print(model.predict(input_data))
 
     if model.predict(input_data)[0] > 0.5:
@@ -69,7 +69,9 @@ def collect_process_data():
             }
         # print(process_info["memory_percent"] , process_info["cpu_percent"])
             process_info['anomally'] = predictor(
-                process_info["cpu_percent"], process_info["memory_percent"])
+                process_info["cpu_percent"], process_info["cpu_times_user"], process_info["cpu_times_system"], process_info["memory_percent"], 
+                process_info['memory_info_rss'], process_info['memory_info_vms'], process_info['num_threads'], process_info['disk_usage'])
+            
             update_or_add(process_info)
 
         except psutil.NoSuchProcess:
