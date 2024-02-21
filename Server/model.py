@@ -19,7 +19,7 @@ data.columns
 model=rfr(random_state=1)
 data.head()
 
-features_list=['cpu_percent', 'memory_percent']
+features_list=['cpu_percent', 'cpu_times_user', 'cpu_times_system', 'memory_percent', 'memory_info_rss', 'memory_info_vms', 'num_threads', 'disk_usage']
 features = data[features_list]
 predict=data.anomally
 predict.head()
